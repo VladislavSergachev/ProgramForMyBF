@@ -11,7 +11,8 @@ namespace MyTrainer
 {
     public partial class onTrainingFrame : Form
     {
-        TimeSpan timeLeft;
+        TimeSpan daily;
+        
         public onTrainingFrame()
         {
             InitializeComponent();
@@ -20,31 +21,42 @@ namespace MyTrainer
 
         private void trainFrame_Load(object sender, EventArgs e)
         {
-            timeLeft = new TimeSpan();
-            
+            timeRemaining.Visible = trainerBase.phEd.Objective.HasObjective;
             updateTimer.Start();
+            daily = trainerBase.phEd.Objective.Daily;
+            motivationLabel.Text = "Не сдавайся!";
+            
 
-            
-            
-            trainerBase.CurrentTime = new TimeSpan(0, 0, 0);
+            trainerBase.phEd.CurrentTime = new TimeSpan(0, 0, 0);
         }
 
         public void stopButton_Click(object sender, EventArgs e)
         {
-            trainerBase.StopTraining();
+            trainerBase.phEd.StopTraining();
             
             updateTimer.Stop();
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
         {
-            trainerBase.CurrentTime = trainerBase.CurrentTime.Add(new TimeSpan(0, 0, 1));
-            trainerBase.Objective.Daily -= new TimeSpan(0, 0, 1);
+            trainerBase.phEd.CurrentTime = trainerBase.phEd.CurrentTime.Add(new TimeSpan(0, 0, 1));
+            trainerBase.phEd.Objective.Daily -= new TimeSpan(0, 0, 1);
 
-            Console.WriteLine(trainerBase.CurrentTime);
+            Console.WriteLine(trainerBase.phEd.CurrentTime);
 
-            currentTime.Text = "Ты тренируешься уже " + trainerBase.CurrentTime;
-            timeRemaining.Text = "Осталось " + trainerBase.Objective.Daily + " для достижения цели на день";
+            currentTime.Text = "Ты тренируешься уже " + trainerBase.phEd.CurrentTime;
+            if (trainerBase.phEd.Objective.HasObjective)
+            {
+                if (trainerBase.phEd.CurrentTime >= daily)
+                {
+                    timeRemaining.Text = "Дневная цель достигнута!";
+                    motivationLabel.Text = "Молодец!";
+                }
+                else
+                    timeRemaining.Text = "Осталось " + trainerBase.phEd.Objective.Daily + " для достижения цели на день";
+
+                Console.WriteLine("H: " + trainerBase.phEd.CurrentTime + " " + trainerBase.phEd.Objective.Daily);
+            }
         }
     }
 }

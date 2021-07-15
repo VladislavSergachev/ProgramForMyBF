@@ -56,9 +56,9 @@ namespace MyTrainer
             this.currentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.currentTime.Location = new System.Drawing.Point(49, 54);
             this.currentTime.Name = "currentTime";
-            this.currentTime.Size = new System.Drawing.Size(274, 24);
+            this.currentTime.Size = new System.Drawing.Size(284, 24);
             this.currentTime.TabIndex = 4;
-            this.currentTime.Text = "Ты тренируешься уже 0:00:00";
+            this.currentTime.Text = "Ты тренируешься уже 00:00:00";
             // 
             // timeRemaining
             // 
@@ -66,9 +66,9 @@ namespace MyTrainer
             this.timeRemaining.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.timeRemaining.Location = new System.Drawing.Point(49, 106);
             this.timeRemaining.Name = "timeRemaining";
-            this.timeRemaining.Size = new System.Drawing.Size(439, 24);
+            this.timeRemaining.Size = new System.Drawing.Size(449, 24);
             this.timeRemaining.TabIndex = 6;
-            this.timeRemaining.Text = "Осталось 0:00:00 для достижения цели на день";
+            this.timeRemaining.Text = "Осталось 00:00:00 для достижения цели на день";
             // 
             // panel1
             // 

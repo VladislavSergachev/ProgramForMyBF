@@ -20,7 +20,7 @@ namespace MyTrainer
 
         private void trainStartButton_Click(object sender, EventArgs e)
         {
-            trainerBase.StartTraining();
+            trainerBase.phEd.StartTraining();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -49,8 +49,13 @@ namespace MyTrainer
 
         private void trainChangeObjButton_Click(object sender, EventArgs e)
         {
-            trainerBase.Objective.OpenWindow();
+            trainerBase.phEd.Objective.OpenWindow();
             trainerBase.MainFrame.Enabled = false;
+        }
+
+        private void MainWindow_Activated(object sender, EventArgs e)
+        {
+            trCoverPanel.Visible = !trainerBase.phEd.Objective.HasObjective;
         }
     }
 }

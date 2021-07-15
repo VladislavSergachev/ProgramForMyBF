@@ -31,6 +31,8 @@ namespace MyTrainer
         {
             this.mainFrame = new System.Windows.Forms.TabControl();
             this.tabTraining = new System.Windows.Forms.TabPage();
+            this.trCoverPanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.trainTrainStatsMini = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.trainTodayToTime = new System.Windows.Forms.Label();
@@ -55,6 +57,8 @@ namespace MyTrainer
             this.trainChangeObjButton = new System.Windows.Forms.Button();
             this.trainWeeksGone = new System.Windows.Forms.Label();
             this.tabFootball = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.footStatsMini = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.footTimeSince = new System.Windows.Forms.Label();
@@ -79,17 +83,13 @@ namespace MyTrainer
             this.footChangeObjButton = new System.Windows.Forms.Button();
             this.footWeeksGone = new System.Windows.Forms.Label();
             this.TrainKindLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.mainFrame.SuspendLayout();
             this.tabTraining.SuspendLayout();
+            this.trCoverPanel.SuspendLayout();
             this.trainTrainStatsMini.SuspendLayout();
             this.tabFootball.SuspendLayout();
-            this.footStatsMini.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.footStatsMini.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainFrame
@@ -106,7 +106,7 @@ namespace MyTrainer
             // 
             // tabTraining
             // 
-            this.tabTraining.Controls.Add(this.panel1);
+            this.tabTraining.Controls.Add(this.trCoverPanel);
             this.tabTraining.Controls.Add(this.trainTrainStatsMini);
             this.tabTraining.Controls.Add(this.trainDaysGone);
             this.tabTraining.Controls.Add(this.label25);
@@ -130,6 +130,24 @@ namespace MyTrainer
             this.tabTraining.TabIndex = 0;
             this.tabTraining.Text = "Тренировки";
             this.tabTraining.UseVisualStyleBackColor = true;
+            // 
+            // trCoverPanel
+            // 
+            this.trCoverPanel.Controls.Add(this.label3);
+            this.trCoverPanel.Location = new System.Drawing.Point(59, 20);
+            this.trCoverPanel.Name = "trCoverPanel";
+            this.trCoverPanel.Size = new System.Drawing.Size(385, 216);
+            this.trCoverPanel.TabIndex = 38;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(38, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(314, 37);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Цель не установлена";
             // 
             // trainTrainStatsMini
             // 
@@ -384,6 +402,24 @@ namespace MyTrainer
             this.tabFootball.Text = "Футбол";
             this.tabFootball.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Location = new System.Drawing.Point(50, 18);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(385, 216);
+            this.panel2.TabIndex = 39;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(38, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(314, 37);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Цель не установлена";
+            // 
             // footStatsMini
             // 
             this.footStatsMini.Controls.Add(this.label2);
@@ -618,42 +654,6 @@ namespace MyTrainer
             this.TrainKindLabel.TabIndex = 2;
             this.TrainKindLabel.Text = "Обычные тренировки";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(59, 20);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(385, 216);
-            this.panel1.TabIndex = 38;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(38, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(314, 37);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Цель не установлена";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(50, 18);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(385, 216);
-            this.panel2.TabIndex = 39;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(38, 96);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(314, 37);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Цель не установлена";
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,16 +663,17 @@ namespace MyTrainer
             this.Controls.Add(this.mainFrame);
             this.Name = "MainWindow";
             this.Text = "Form1";
+            this.Activated += new System.EventHandler(this.MainWindow_Activated);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.mainFrame.ResumeLayout(false);
             this.tabTraining.ResumeLayout(false);
+            this.trCoverPanel.ResumeLayout(false);
+            this.trCoverPanel.PerformLayout();
             this.trainTrainStatsMini.ResumeLayout(false);
             this.tabFootball.ResumeLayout(false);
-            this.footStatsMini.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.footStatsMini.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -730,7 +731,7 @@ namespace MyTrainer
         private System.Windows.Forms.Label TrainKindLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel trCoverPanel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
