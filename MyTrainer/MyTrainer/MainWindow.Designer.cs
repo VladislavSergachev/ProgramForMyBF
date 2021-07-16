@@ -34,8 +34,10 @@ namespace MyTrainer
             this.trCoverPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.trainTrainStatsMini = new System.Windows.Forms.GroupBox();
+            this.trStatCoverPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.trainTodayToTime = new System.Windows.Forms.Label();
+            this.trainTodaySinceTime = new System.Windows.Forms.Label();
             this.trainTodaySince = new System.Windows.Forms.Label();
             this.trainTodayFromTime = new System.Windows.Forms.Label();
             this.trainTodayFrom = new System.Windows.Forms.Label();
@@ -52,14 +54,16 @@ namespace MyTrainer
             this.label29 = new System.Windows.Forms.Label();
             this.trainStartButton = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
-            this.trainWeeksRequired = new System.Windows.Forms.Label();
+            this.trainHoursRequired = new System.Windows.Forms.Label();
             this.trainDetailedButton = new System.Windows.Forms.Button();
             this.trainChangeObjButton = new System.Windows.Forms.Button();
-            this.trainWeeksGone = new System.Windows.Forms.Label();
+            this.trainHoursGone = new System.Windows.Forms.Label();
             this.tabFootball = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.fbCoverPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.footStatsMini = new System.Windows.Forms.GroupBox();
+            this.fbStatCoverPanel = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.footTimeSince = new System.Windows.Forms.Label();
             this.footSince = new System.Windows.Forms.Label();
@@ -78,18 +82,20 @@ namespace MyTrainer
             this.label47 = new System.Windows.Forms.Label();
             this.footStartButton = new System.Windows.Forms.Button();
             this.label48 = new System.Windows.Forms.Label();
-            this.footWeeksRequired = new System.Windows.Forms.Label();
+            this.footHoursRequired = new System.Windows.Forms.Label();
             this.footDetailedButton = new System.Windows.Forms.Button();
             this.footChangeObjButton = new System.Windows.Forms.Button();
-            this.footWeeksGone = new System.Windows.Forms.Label();
+            this.footHoursGone = new System.Windows.Forms.Label();
             this.TrainKindLabel = new System.Windows.Forms.Label();
             this.mainFrame.SuspendLayout();
             this.tabTraining.SuspendLayout();
             this.trCoverPanel.SuspendLayout();
             this.trainTrainStatsMini.SuspendLayout();
+            this.trStatCoverPanel.SuspendLayout();
             this.tabFootball.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.fbCoverPanel.SuspendLayout();
             this.footStatsMini.SuspendLayout();
+            this.fbStatCoverPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainFrame
@@ -119,10 +125,10 @@ namespace MyTrainer
             this.tabTraining.Controls.Add(this.label29);
             this.tabTraining.Controls.Add(this.trainStartButton);
             this.tabTraining.Controls.Add(this.label30);
-            this.tabTraining.Controls.Add(this.trainWeeksRequired);
+            this.tabTraining.Controls.Add(this.trainHoursRequired);
             this.tabTraining.Controls.Add(this.trainDetailedButton);
             this.tabTraining.Controls.Add(this.trainChangeObjButton);
-            this.tabTraining.Controls.Add(this.trainWeeksGone);
+            this.tabTraining.Controls.Add(this.trainHoursGone);
             this.tabTraining.Location = new System.Drawing.Point(4, 4);
             this.tabTraining.Name = "tabTraining";
             this.tabTraining.Padding = new System.Windows.Forms.Padding(3);
@@ -134,7 +140,7 @@ namespace MyTrainer
             // trCoverPanel
             // 
             this.trCoverPanel.Controls.Add(this.label3);
-            this.trCoverPanel.Location = new System.Drawing.Point(59, 20);
+            this.trCoverPanel.Location = new System.Drawing.Point(62, 20);
             this.trCoverPanel.Name = "trCoverPanel";
             this.trCoverPanel.Size = new System.Drawing.Size(385, 216);
             this.trCoverPanel.TabIndex = 38;
@@ -151,8 +157,9 @@ namespace MyTrainer
             // 
             // trainTrainStatsMini
             // 
+            this.trainTrainStatsMini.Controls.Add(this.trStatCoverPanel);
             this.trainTrainStatsMini.Controls.Add(this.label1);
-            this.trainTrainStatsMini.Controls.Add(this.trainTodayToTime);
+            this.trainTrainStatsMini.Controls.Add(this.trainTodaySinceTime);
             this.trainTrainStatsMini.Controls.Add(this.trainTodaySince);
             this.trainTrainStatsMini.Controls.Add(this.trainTodayFromTime);
             this.trainTrainStatsMini.Controls.Add(this.trainTodayFrom);
@@ -165,6 +172,23 @@ namespace MyTrainer
             this.trainTrainStatsMini.TabStop = false;
             this.trainTrainStatsMini.Text = "Статистика";
             // 
+            // trStatCoverPanel
+            // 
+            this.trStatCoverPanel.Controls.Add(this.label6);
+            this.trStatCoverPanel.Location = new System.Drawing.Point(3, 5);
+            this.trStatCoverPanel.Name = "trStatCoverPanel";
+            this.trStatCoverPanel.Size = new System.Drawing.Size(200, 179);
+            this.trStatCoverPanel.TabIndex = 39;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(154, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Сегодня ты не тренировался";
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -175,14 +199,14 @@ namespace MyTrainer
             this.label1.Text = "Дневная цель достигнута";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // trainTodayToTime
+            // trainTodaySinceTime
             // 
-            this.trainTodayToTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainTodayToTime.Location = new System.Drawing.Point(99, 96);
-            this.trainTodayToTime.Name = "trainTodayToTime";
-            this.trainTodayToTime.Size = new System.Drawing.Size(41, 17);
-            this.trainTodayToTime.TabIndex = 22;
-            this.trainTodayToTime.Text = "00:00";
+            this.trainTodaySinceTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.trainTodaySinceTime.Location = new System.Drawing.Point(99, 96);
+            this.trainTodaySinceTime.Name = "trainTodaySinceTime";
+            this.trainTodaySinceTime.Size = new System.Drawing.Size(41, 17);
+            this.trainTodaySinceTime.TabIndex = 22;
+            this.trainTodaySinceTime.Text = "00:00";
             // 
             // trainTodaySince
             // 
@@ -232,7 +256,7 @@ namespace MyTrainer
             // trainDaysGone
             // 
             this.trainDaysGone.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainDaysGone.Location = new System.Drawing.Point(46, 20);
+            this.trainDaysGone.Location = new System.Drawing.Point(309, 20);
             this.trainDaysGone.Name = "trainDaysGone";
             this.trainDaysGone.Size = new System.Drawing.Size(47, 67);
             this.trainDaysGone.TabIndex = 22;
@@ -270,11 +294,11 @@ namespace MyTrainer
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(379, 71);
+            this.label27.Location = new System.Drawing.Point(154, 71);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(56, 16);
             this.label27.TabIndex = 35;
-            this.label27.Text = "недель";
+            this.label27.Text = "часов";
             this.label27.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label34
@@ -290,7 +314,7 @@ namespace MyTrainer
             // trainDaysRequired
             // 
             this.trainDaysRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainDaysRequired.Location = new System.Drawing.Point(120, 48);
+            this.trainDaysRequired.Location = new System.Drawing.Point(383, 48);
             this.trainDaysRequired.Name = "trainDaysRequired";
             this.trainDaysRequired.Size = new System.Drawing.Size(23, 37);
             this.trainDaysRequired.TabIndex = 23;
@@ -300,7 +324,7 @@ namespace MyTrainer
             // label33
             // 
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(331, 48);
+            this.label33.Location = new System.Drawing.Point(106, 48);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(15, 37);
             this.label33.TabIndex = 27;
@@ -310,9 +334,9 @@ namespace MyTrainer
             // label29
             // 
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(149, 71);
+            this.label29.Location = new System.Drawing.Point(410, 71);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(41, 16);
+            this.label29.Size = new System.Drawing.Size(37, 16);
             this.label29.TabIndex = 34;
             this.label29.Text = "днейднейдней";
             this.label29.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -330,22 +354,22 @@ namespace MyTrainer
             // label30
             // 
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(99, 48);
+            this.label30.Location = new System.Drawing.Point(362, 48);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(15, 37);
             this.label30.TabIndex = 24;
             this.label30.Text = "/";
             this.label30.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // trainWeeksRequired
+            // trainHoursRequired
             // 
-            this.trainWeeksRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainWeeksRequired.Location = new System.Drawing.Point(352, 48);
-            this.trainWeeksRequired.Name = "trainWeeksRequired";
-            this.trainWeeksRequired.Size = new System.Drawing.Size(23, 37);
-            this.trainWeeksRequired.TabIndex = 26;
-            this.trainWeeksRequired.Text = "0";
-            this.trainWeeksRequired.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.trainHoursRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.trainHoursRequired.Location = new System.Drawing.Point(127, 48);
+            this.trainHoursRequired.Name = "trainHoursRequired";
+            this.trainHoursRequired.Size = new System.Drawing.Size(23, 37);
+            this.trainHoursRequired.TabIndex = 26;
+            this.trainHoursRequired.Text = "0";
+            this.trainHoursRequired.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // trainDetailedButton
             // 
@@ -366,18 +390,18 @@ namespace MyTrainer
             this.trainChangeObjButton.UseVisualStyleBackColor = true;
             this.trainChangeObjButton.Click += new System.EventHandler(this.trainChangeObjButton_Click);
             // 
-            // trainWeeksGone
+            // trainHoursGone
             // 
-            this.trainWeeksGone.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainWeeksGone.Location = new System.Drawing.Point(278, 20);
-            this.trainWeeksGone.Name = "trainWeeksGone";
-            this.trainWeeksGone.Size = new System.Drawing.Size(47, 67);
-            this.trainWeeksGone.TabIndex = 25;
-            this.trainWeeksGone.Text = "0";
+            this.trainHoursGone.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.trainHoursGone.Location = new System.Drawing.Point(53, 20);
+            this.trainHoursGone.Name = "trainHoursGone";
+            this.trainHoursGone.Size = new System.Drawing.Size(47, 67);
+            this.trainHoursGone.TabIndex = 25;
+            this.trainHoursGone.Text = "0";
             // 
             // tabFootball
             // 
-            this.tabFootball.Controls.Add(this.panel2);
+            this.tabFootball.Controls.Add(this.fbCoverPanel);
             this.tabFootball.Controls.Add(this.footStatsMini);
             this.tabFootball.Controls.Add(this.footDaysGone);
             this.tabFootball.Controls.Add(this.label43);
@@ -390,10 +414,10 @@ namespace MyTrainer
             this.tabFootball.Controls.Add(this.label47);
             this.tabFootball.Controls.Add(this.footStartButton);
             this.tabFootball.Controls.Add(this.label48);
-            this.tabFootball.Controls.Add(this.footWeeksRequired);
+            this.tabFootball.Controls.Add(this.footHoursRequired);
             this.tabFootball.Controls.Add(this.footDetailedButton);
             this.tabFootball.Controls.Add(this.footChangeObjButton);
-            this.tabFootball.Controls.Add(this.footWeeksGone);
+            this.tabFootball.Controls.Add(this.footHoursGone);
             this.tabFootball.Location = new System.Drawing.Point(4, 4);
             this.tabFootball.Name = "tabFootball";
             this.tabFootball.Padding = new System.Windows.Forms.Padding(3);
@@ -402,13 +426,13 @@ namespace MyTrainer
             this.tabFootball.Text = "Футбол";
             this.tabFootball.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // fbCoverPanel
             // 
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(50, 18);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(385, 216);
-            this.panel2.TabIndex = 39;
+            this.fbCoverPanel.Controls.Add(this.label4);
+            this.fbCoverPanel.Location = new System.Drawing.Point(65, 18);
+            this.fbCoverPanel.Name = "fbCoverPanel";
+            this.fbCoverPanel.Size = new System.Drawing.Size(385, 216);
+            this.fbCoverPanel.TabIndex = 39;
             // 
             // label4
             // 
@@ -422,6 +446,7 @@ namespace MyTrainer
             // 
             // footStatsMini
             // 
+            this.footStatsMini.Controls.Add(this.fbStatCoverPanel);
             this.footStatsMini.Controls.Add(this.label2);
             this.footStatsMini.Controls.Add(this.footTimeSince);
             this.footStatsMini.Controls.Add(this.footSince);
@@ -435,6 +460,24 @@ namespace MyTrainer
             this.footStatsMini.TabIndex = 37;
             this.footStatsMini.TabStop = false;
             this.footStatsMini.Text = "Статистика";
+            // 
+            // fbStatCoverPanel
+            // 
+            this.fbStatCoverPanel.Controls.Add(this.label5);
+            this.fbStatCoverPanel.Location = new System.Drawing.Point(0, 0);
+            this.fbStatCoverPanel.Name = "fbStatCoverPanel";
+            this.fbStatCoverPanel.Size = new System.Drawing.Size(200, 179);
+            this.fbStatCoverPanel.TabIndex = 24;
+            this.fbStatCoverPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.fbStatCoverPanel_Paint);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Сегодня ты не тренировался";
             // 
             // label2
             // 
@@ -503,7 +546,7 @@ namespace MyTrainer
             // footDaysGone
             // 
             this.footDaysGone.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.footDaysGone.Location = new System.Drawing.Point(46, 18);
+            this.footDaysGone.Location = new System.Drawing.Point(302, 18);
             this.footDaysGone.Name = "footDaysGone";
             this.footDaysGone.Size = new System.Drawing.Size(47, 67);
             this.footDaysGone.TabIndex = 22;
@@ -541,11 +584,11 @@ namespace MyTrainer
             // label45
             // 
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label45.Location = new System.Drawing.Point(379, 69);
+            this.label45.Location = new System.Drawing.Point(152, 69);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(56, 16);
             this.label45.TabIndex = 35;
-            this.label45.Text = "недель";
+            this.label45.Text = "часов";
             this.label45.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label52
@@ -561,7 +604,7 @@ namespace MyTrainer
             // footDaysRequired
             // 
             this.footDaysRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.footDaysRequired.Location = new System.Drawing.Point(120, 46);
+            this.footDaysRequired.Location = new System.Drawing.Point(376, 46);
             this.footDaysRequired.Name = "footDaysRequired";
             this.footDaysRequired.Size = new System.Drawing.Size(23, 37);
             this.footDaysRequired.TabIndex = 23;
@@ -571,7 +614,7 @@ namespace MyTrainer
             // label51
             // 
             this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label51.Location = new System.Drawing.Point(331, 46);
+            this.label51.Location = new System.Drawing.Point(104, 46);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(15, 37);
             this.label51.TabIndex = 27;
@@ -581,7 +624,7 @@ namespace MyTrainer
             // label47
             // 
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label47.Location = new System.Drawing.Point(149, 69);
+            this.label47.Location = new System.Drawing.Point(405, 69);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(41, 16);
             this.label47.TabIndex = 34;
@@ -596,26 +639,27 @@ namespace MyTrainer
             this.footStartButton.TabIndex = 31;
             this.footStartButton.Text = "Начать тренировку";
             this.footStartButton.UseVisualStyleBackColor = true;
+            this.footStartButton.Click += new System.EventHandler(this.footStartButton_Click);
             // 
             // label48
             // 
             this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label48.Location = new System.Drawing.Point(99, 46);
+            this.label48.Location = new System.Drawing.Point(355, 46);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(15, 37);
             this.label48.TabIndex = 24;
             this.label48.Text = "/";
             this.label48.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // footWeeksRequired
+            // footHoursRequired
             // 
-            this.footWeeksRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.footWeeksRequired.Location = new System.Drawing.Point(352, 46);
-            this.footWeeksRequired.Name = "footWeeksRequired";
-            this.footWeeksRequired.Size = new System.Drawing.Size(23, 37);
-            this.footWeeksRequired.TabIndex = 26;
-            this.footWeeksRequired.Text = "0";
-            this.footWeeksRequired.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.footHoursRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.footHoursRequired.Location = new System.Drawing.Point(125, 46);
+            this.footHoursRequired.Name = "footHoursRequired";
+            this.footHoursRequired.Size = new System.Drawing.Size(23, 37);
+            this.footHoursRequired.TabIndex = 26;
+            this.footHoursRequired.Text = "0";
+            this.footHoursRequired.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // footDetailedButton
             // 
@@ -634,15 +678,16 @@ namespace MyTrainer
             this.footChangeObjButton.TabIndex = 32;
             this.footChangeObjButton.Text = "Изменить цели";
             this.footChangeObjButton.UseVisualStyleBackColor = true;
+            this.footChangeObjButton.Click += new System.EventHandler(this.footChangeObjButton_Click);
             // 
-            // footWeeksGone
+            // footHoursGone
             // 
-            this.footWeeksGone.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.footWeeksGone.Location = new System.Drawing.Point(278, 18);
-            this.footWeeksGone.Name = "footWeeksGone";
-            this.footWeeksGone.Size = new System.Drawing.Size(47, 67);
-            this.footWeeksGone.TabIndex = 25;
-            this.footWeeksGone.Text = "0";
+            this.footHoursGone.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.footHoursGone.Location = new System.Drawing.Point(51, 18);
+            this.footHoursGone.Name = "footHoursGone";
+            this.footHoursGone.Size = new System.Drawing.Size(47, 67);
+            this.footHoursGone.TabIndex = 25;
+            this.footHoursGone.Text = "0";
             // 
             // TrainKindLabel
             // 
@@ -670,10 +715,14 @@ namespace MyTrainer
             this.trCoverPanel.ResumeLayout(false);
             this.trCoverPanel.PerformLayout();
             this.trainTrainStatsMini.ResumeLayout(false);
+            this.trStatCoverPanel.ResumeLayout(false);
+            this.trStatCoverPanel.PerformLayout();
             this.tabFootball.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.fbCoverPanel.ResumeLayout(false);
+            this.fbCoverPanel.PerformLayout();
             this.footStatsMini.ResumeLayout(false);
+            this.fbStatCoverPanel.ResumeLayout(false);
+            this.fbStatCoverPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -685,7 +734,7 @@ namespace MyTrainer
         private System.Windows.Forms.TabPage tabTraining;
         private System.Windows.Forms.TabPage tabFootball;
         private System.Windows.Forms.GroupBox trainTrainStatsMini;
-        private System.Windows.Forms.Label trainTodayToTime;
+        private System.Windows.Forms.Label trainTodaySinceTime;
         private System.Windows.Forms.Label trainTodaySince;
         private System.Windows.Forms.Label trainTodayFromTime;
         private System.Windows.Forms.Label trainTodayFrom;
@@ -702,10 +751,10 @@ namespace MyTrainer
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button trainStartButton;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label trainWeeksRequired;
+        private System.Windows.Forms.Label trainHoursRequired;
         private System.Windows.Forms.Button trainDetailedButton;
         private System.Windows.Forms.Button trainChangeObjButton;
-        private System.Windows.Forms.Label trainWeeksGone;
+        private System.Windows.Forms.Label trainHoursGone;
         private System.Windows.Forms.GroupBox footStatsMini;
         private System.Windows.Forms.Label footTimeSince;
         private System.Windows.Forms.Label footSince;
@@ -724,17 +773,21 @@ namespace MyTrainer
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Button footStartButton;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label footWeeksRequired;
+        private System.Windows.Forms.Label footHoursRequired;
         private System.Windows.Forms.Button footDetailedButton;
         private System.Windows.Forms.Button footChangeObjButton;
-        private System.Windows.Forms.Label footWeeksGone;
+        private System.Windows.Forms.Label footHoursGone;
         private System.Windows.Forms.Label TrainKindLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel trCoverPanel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel fbCoverPanel;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel trStatCoverPanel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel fbStatCoverPanel;
+        private System.Windows.Forms.Label label5;
     }
 }
 

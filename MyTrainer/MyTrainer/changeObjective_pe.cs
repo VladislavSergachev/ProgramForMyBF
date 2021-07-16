@@ -13,18 +13,22 @@ namespace MyTrainer
     {
         public Size frameSize;
         public bool isAnyValChanged = false;
+        public trainerBase.TrainKind kind;
+
 
         bool zerotime_condition;
 
-        public changeObjective_pe()
+        public changeObjective_pe(trainerBase.TrainKind kindOfTrain)
         {
             InitializeComponent();
             frameSize = Size;
+
+            kind = kindOfTrain;
         }
 
         private void applyObjButton_Click(object sender, EventArgs e)
         {
-            objFrameCloseHandler();
+            objFrameCloseHandler(kind);
         }
 
         private void changeFrameSized(object sender, EventArgs e)
@@ -34,59 +38,109 @@ namespace MyTrainer
 
         private void onChangeFrameClose(object sender, FormClosingEventArgs e)
         {
-            objFrameCloseHandler();
+            objFrameCloseHandler(kind);
         }
 
-        public void objFrameCloseHandler()
+        public void objFrameCloseHandler(trainerBase.TrainKind trainKind)
         {
             zerotime_condition =
             minutesPerDay.Value == 0 &&
             hoursPerDay.Value == 0 &&
             secondsPerDay.Value == 0;
-            
-            if (hasObjective.Checked) // IF USER HAS DAILY/MONTHLY/ANY OBJECTIVE...
+
+            if (trainKind.Equals(trainerBase.TrainKind.PhysicalEdu))
             {
-                if (zerotime_condition) // ... THEN CHECK IF TIME SET TO 00:00:00 ...
+                if (hasObjective.Checked) // IF USER HAS DAILY/MONTHLY/ANY OBJECTIVE...
                 {
-                    if (MessageBox.Show("Ты не задал количество времени для занятий. Хочешь отключить эту функцию?", "Задай время", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) /// IF SO THEN NOTIFY USER HE WASN`T SET TARGET TIME AND ASK IF HE WANT TO DO IT.
+                    if (zerotime_condition) // ... THEN CHECK IF TIME SET TO 00:00:00 ...
                     {
-                        // IF HE ANSWERS "YES" THEN WE DIRECTLY CHANGE HAS_OBJECTIVE COMBOBOX VALUE TO "FALSE" 
-                        hasObjective.Checked = false; 
-                        zerotime_condition = false; // RESET ZEROTIME_CONDITION TO PREVENT REPEATED FLASHING OF MESSAGEBOX
-                        
-                        trainerBase.MainFrame.Enabled = true; // UNLOCKING THE MAIN WINDOW
-                        trainerBase.phEd.Objective.CloseWindow(); // CLOSE "OBJECTIVE WINDOW"
+                        if (MessageBox.Show("Ты не задал количество времени для занятий. Хочешь отключить эту функцию?", "Задай время", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) /// IF SO THEN NOTIFY USER HE WASN`T SET TARGET TIME AND ASK IF HE WANT TO DO IT.
+                        {
+                            // IF HE ANSWERS "YES" THEN WE DIRECTLY CHANGE HAS_OBJECTIVE COMBOBOX VALUE TO "FALSE" 
+                            hasObjective.Checked = false;
+                            zerotime_condition = false; // RESET ZEROTIME_CONDITION TO PREVENT REPEATED FLASHING OF MESSAGEBOX
+
+                            trainerBase.MainFrame.Enabled = true; // UNLOCKING THE MAIN WINDOW
+                            trainerBase.phEd.Objective.CloseWindow(); // CLOSE "OBJECTIVE WINDOW"
+                        }
+                        else
+                        {
+                            zerotime_condition = false; // IF HE SAYS "NO" WE RESET ZEROTIME_CONDITION (for the same purpose as above) 
+                            hasObjective.Checked = true; // SETTING COMBOBOX VALUE TO TRUE AS BY SAYING "NO" USER MEANS THAT HE WANT TO SET SOME OBJECTIVE 
+                        }
+                        trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
                     }
-                    else
+                    else // ELSE, IF TIME VALUE IS DIFERRENT TO 00:00:OO
                     {
-                        zerotime_condition = false; // IF HE SAYS "NO" WE RESET ZEROTIME_CONDITION (for the same purpose as above) 
-                        hasObjective.Checked = true; // SETTING COMBOBOX VALUE TO TRUE AS BY SAYING "NO" USER MEANS THAT HE WANT TO SET SOME OBJECTIVE 
+                        trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // THEN STORING VALUE OF COMBOBOX TO MAIN CLASS
+                        trainerBase.phEd.Objective.SetObjectiveTime // GATHERING VALUES FROM THE FORM AND STORIN THEM TO MAIN CLASS
+                        (
+                            Convert.ToInt32(monthsPerYear.Value),
+                            Convert.ToInt32(daysPerMonth.Value),
+                            Convert.ToInt32(hoursPerDay.Value),
+                            Convert.ToInt32(minutesPerDay.Value),
+                            Convert.ToInt32(secondsPerDay.Value)
+                        );
+                        trainerBase.phEd.Objective.CloseWindow();
+                        trainerBase.MainFrame.Enabled = true; // UNLOCKING MAIN WINDOW
                     }
-                    trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
                 }
-                else // ELSE, IF TIME VALUE IS DIFERRENT TO 00:00:OO
+                else // ELSE, IF USER DOESN`T WANT TO SET ANY OBJECTIVE
                 {
-                    trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // THEN STORING VALUE OF COMBOBOX TO MAIN CLASS
-                    trainerBase.phEd.Objective.SetObjectiveTime // GATHERING VALUES FROM THE FORM AND STORIN THEM TO MAIN CLASS
-                    (
-                        Convert.ToInt32(monthsPerYear.Value),
-                        Convert.ToInt32(daysPerMonth.Value),
-                        Convert.ToInt32(hoursPerDay.Value),
-                        Convert.ToInt32(minutesPerDay.Value),
-                        Convert.ToInt32(secondsPerDay.Value)
-                    );
-                    trainerBase.phEd.Objective.CloseWindow();
-                    trainerBase.MainFrame.Enabled = true; // UNLOCKING MAIN WINDOW
+                    trainerBase.phEd.Objective.CloseWindow(); // WE`RE JUST CLOSING THE WINDOW (we aren`t changing any values because we`ll do it below at line 90)
+                    trainerBase.MainFrame.Enabled = true;
                 }
+
+                trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
+                trainerBase.phEd.Objective.GetLog();
             }
-            else // ELSE, IF USER DOESN`T WANT TO SET ANY OBJECTIVE
+            else
             {
-                trainerBase.phEd.Objective.CloseWindow(); // WE`RE JUST CLOSING THE WINDOW (we aren`t changing any values because we`ll do it below at line 90)
-                trainerBase.MainFrame.Enabled = true;
+                if (hasObjective.Checked) // IF USER HAS DAILY/MONTHLY/ANY OBJECTIVE...
+                {
+                    if (zerotime_condition) // ... THEN CHECK IF TIME SET TO 00:00:00 ...
+                    {
+                        if (MessageBox.Show("Ты не задал количество времени для занятий. Хочешь отключить эту функцию?", "Задай время", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) /// IF SO THEN NOTIFY USER HE WASN`T SET TARGET TIME AND ASK IF HE WANT TO DO IT.
+                        {
+                            // IF HE ANSWERS "YES" THEN WE DIRECTLY CHANGE HAS_OBJECTIVE COMBOBOX VALUE TO "FALSE" 
+                            hasObjective.Checked = false;
+                            zerotime_condition = false; // RESET ZEROTIME_CONDITION TO PREVENT REPEATED FLASHING OF MESSAGEBOX
+
+                            trainerBase.MainFrame.Enabled = true; // UNLOCKING THE MAIN WINDOW
+                            trainerBase.Football.Objective.CloseWindow(); // CLOSE "OBJECTIVE WINDOW"
+                        }
+                        else
+                        {
+                            zerotime_condition = false; // IF HE SAYS "NO" WE RESET ZEROTIME_CONDITION (for the same purpose as above) 
+                            hasObjective.Checked = true; // SETTING COMBOBOX VALUE TO TRUE AS BY SAYING "NO" USER MEANS THAT HE WANT TO SET SOME OBJECTIVE 
+                        }
+                        trainerBase.Football.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
+                    }
+                    else // ELSE, IF TIME VALUE IS DIFERRENT TO 00:00:OO
+                    {
+                        trainerBase.Football.Objective.HasObjective = hasObjective.Checked; // THEN STORING VALUE OF COMBOBOX TO MAIN CLASS
+                        trainerBase.Football.Objective.SetObjectiveTime // GATHERING VALUES FROM THE FORM AND STORIN THEM TO MAIN CLASS
+                        (
+                            Convert.ToInt32(monthsPerYear.Value),
+                            Convert.ToInt32(daysPerMonth.Value),
+                            Convert.ToInt32(hoursPerDay.Value),
+                            Convert.ToInt32(minutesPerDay.Value),
+                            Convert.ToInt32(secondsPerDay.Value)
+                        );
+                        trainerBase.Football.Objective.CloseWindow();
+                        trainerBase.MainFrame.Enabled = true; // UNLOCKING MAIN WINDOW
+                    }
+
+                }
+                else // ELSE, IF USER DOESN`T WANT TO SET ANY OBJECTIVE
+                {
+                    trainerBase.Football.Objective.CloseWindow(); // WE`RE JUST CLOSING THE WINDOW (we aren`t changing any values because we`ll do it below at line 90)
+                    trainerBase.MainFrame.Enabled = true;
+                }
+
+                trainerBase.Football.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
+                trainerBase.Football.Objective.GetLog();
             }
-            
-            trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
-            trainerBase.phEd.Objective.GetLog();
         }
 
         private void hasObjective_CheckedChanged(object sender, EventArgs e)

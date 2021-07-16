@@ -9,3 +9,4 @@ E:\Developement\Workspace\MyTrainer\MyTrainer\obj\Debug\MyTrainer.pdb
 E:\Developement\Workspace\MyTrainer\MyTrainer\obj\Debug\MyTrainer.MainWindow.resources
 E:\Developement\Workspace\MyTrainer\MyTrainer\obj\Debug\MyTrainer.onTrainingFrame.resources
 E:\Developement\Workspace\MyTrainer\MyTrainer\obj\Debug\MyTrainer.changeObjective_pe.resources
+E:\Developement\Workspace\MyTrainer\MyTrainer\obj\Debug\MyTrainer.stats.resources

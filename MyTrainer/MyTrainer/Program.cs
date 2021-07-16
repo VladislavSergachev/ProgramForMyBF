@@ -15,6 +15,9 @@ namespace MyTrainer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            trainerBase.InitMainWin();
+            
             Application.Run(trainerBase.MainFrame);
         }
     }
