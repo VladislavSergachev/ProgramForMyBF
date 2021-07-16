@@ -61,19 +61,19 @@ namespace MyTrainer
                             zerotime_condition = false; // RESET ZEROTIME_CONDITION TO PREVENT REPEATED FLASHING OF MESSAGEBOX
 
                             trainerBase.MainFrame.Enabled = true; // UNLOCKING THE MAIN WINDOW
-                            trainerBase.phEd.Objective.CloseWindow(); // CLOSE "OBJECTIVE WINDOW"
+                            trainerBase.PE.CloseObjWindow(); // CLOSE "OBJECTIVE WINDOW"
                         }
                         else
                         {
                             zerotime_condition = false; // IF HE SAYS "NO" WE RESET ZEROTIME_CONDITION (for the same purpose as above) 
                             hasObjective.Checked = true; // SETTING COMBOBOX VALUE TO TRUE AS BY SAYING "NO" USER MEANS THAT HE WANT TO SET SOME OBJECTIVE 
                         }
-                        trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
+                        trainerBase.PE.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
                     }
                     else // ELSE, IF TIME VALUE IS DIFERRENT TO 00:00:OO
                     {
-                        trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // THEN STORING VALUE OF COMBOBOX TO MAIN CLASS
-                        trainerBase.phEd.Objective.SetObjectiveTime // GATHERING VALUES FROM THE FORM AND STORIN THEM TO MAIN CLASS
+                        trainerBase.PE.HasObjective = hasObjective.Checked; // THEN STORING VALUE OF COMBOBOX TO MAIN CLASS
+                        trainerBase.PE.SetObjectiveTime // GATHERING VALUES FROM THE FORM AND STORIN THEM TO MAIN CLASS
                         (
                             Convert.ToInt32(monthsPerYear.Value),
                             Convert.ToInt32(daysPerMonth.Value),
@@ -81,18 +81,18 @@ namespace MyTrainer
                             Convert.ToInt32(minutesPerDay.Value),
                             Convert.ToInt32(secondsPerDay.Value)
                         );
-                        trainerBase.phEd.Objective.CloseWindow();
+                        trainerBase.PE.CloseObjWindow();
                         trainerBase.MainFrame.Enabled = true; // UNLOCKING MAIN WINDOW
                     }
                 }
                 else // ELSE, IF USER DOESN`T WANT TO SET ANY OBJECTIVE
                 {
-                    trainerBase.phEd.Objective.CloseWindow(); // WE`RE JUST CLOSING THE WINDOW (we aren`t changing any values because we`ll do it below at line 90)
+                    trainerBase.PE.CloseObjWindow(); // WE`RE JUST CLOSING THE WINDOW (we aren`t changing any values because we`ll do it below at line 90)
                     trainerBase.MainFrame.Enabled = true;
                 }
 
-                trainerBase.phEd.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
-                trainerBase.phEd.Objective.GetLog();
+                trainerBase.PE.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
+                trainerBase.PE.GetLog();
             }
             else
             {
@@ -107,19 +107,19 @@ namespace MyTrainer
                             zerotime_condition = false; // RESET ZEROTIME_CONDITION TO PREVENT REPEATED FLASHING OF MESSAGEBOX
 
                             trainerBase.MainFrame.Enabled = true; // UNLOCKING THE MAIN WINDOW
-                            trainerBase.Football.Objective.CloseWindow(); // CLOSE "OBJECTIVE WINDOW"
+                            trainerBase.Football.CloseObjWindow(); // CLOSE "OBJECTIVE WINDOW"
                         }
                         else
                         {
                             zerotime_condition = false; // IF HE SAYS "NO" WE RESET ZEROTIME_CONDITION (for the same purpose as above) 
                             hasObjective.Checked = true; // SETTING COMBOBOX VALUE TO TRUE AS BY SAYING "NO" USER MEANS THAT HE WANT TO SET SOME OBJECTIVE 
                         }
-                        trainerBase.Football.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
+                        trainerBase.Football.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
                     }
                     else // ELSE, IF TIME VALUE IS DIFERRENT TO 00:00:OO
                     {
-                        trainerBase.Football.Objective.HasObjective = hasObjective.Checked; // THEN STORING VALUE OF COMBOBOX TO MAIN CLASS
-                        trainerBase.Football.Objective.SetObjectiveTime // GATHERING VALUES FROM THE FORM AND STORIN THEM TO MAIN CLASS
+                        trainerBase.Football.HasObjective = hasObjective.Checked; // THEN STORING VALUE OF COMBOBOX TO MAIN CLASS
+                        trainerBase.Football.SetObjectiveTime // GATHERING VALUES FROM THE FORM AND STORIN THEM TO MAIN CLASS
                         (
                             Convert.ToInt32(monthsPerYear.Value),
                             Convert.ToInt32(daysPerMonth.Value),
@@ -127,19 +127,19 @@ namespace MyTrainer
                             Convert.ToInt32(minutesPerDay.Value),
                             Convert.ToInt32(secondsPerDay.Value)
                         );
-                        trainerBase.Football.Objective.CloseWindow();
+                        trainerBase.Football.CloseObjWindow();
                         trainerBase.MainFrame.Enabled = true; // UNLOCKING MAIN WINDOW
                     }
 
                 }
                 else // ELSE, IF USER DOESN`T WANT TO SET ANY OBJECTIVE
                 {
-                    trainerBase.Football.Objective.CloseWindow(); // WE`RE JUST CLOSING THE WINDOW (we aren`t changing any values because we`ll do it below at line 90)
+                    trainerBase.Football.CloseObjWindow(); // WE`RE JUST CLOSING THE WINDOW (we aren`t changing any values because we`ll do it below at line 90)
                     trainerBase.MainFrame.Enabled = true;
                 }
 
-                trainerBase.Football.Objective.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
-                trainerBase.Football.Objective.GetLog();
+                trainerBase.Football.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
+                trainerBase.Football.GetLog();
             }
         }
 

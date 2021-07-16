@@ -709,6 +709,7 @@ namespace MyTrainer
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.Activated += new System.EventHandler(this.MainWindow_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.mainFrame.ResumeLayout(false);
             this.tabTraining.ResumeLayout(false);
