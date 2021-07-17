@@ -79,7 +79,7 @@ namespace MyTrainer
           //  Console.WriteLine("PE EndTime " + trainerBase.PE.EndTime);
           //  Console.WriteLine("FB BeginTime " + trainerBase.Football.BeginTime);
           //  Console.WriteLine("FB EndTime " + trainerBase.Football.EndTime);
-          //  Console.WriteLine("DateTime.Now " + DateTime.Now);
+           Console.WriteLine("DateTime.Today " + DateTime.Today);
 
         }
 

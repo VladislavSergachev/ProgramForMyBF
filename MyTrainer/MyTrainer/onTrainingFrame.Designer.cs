@@ -117,6 +117,7 @@ namespace MyTrainer
             this.Controls.Add(this.label1);
             this.Name = "onTrainingFrame";
             this.Text = "Form2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onTrainingFrame_FormClosing);
             this.Load += new System.EventHandler(this.trainFrame_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

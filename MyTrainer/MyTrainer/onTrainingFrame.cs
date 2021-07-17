@@ -56,6 +56,21 @@ namespace MyTrainer
 
         }
 
+        private void onTrainingFrame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (trainKind.Equals(trainerBase.TrainKind.PhysicalEdu))
+            {
+                trainerBase.PE.StopTraining();
+
+            }
+            else
+            {
+                trainerBase.Football.StopTraining();
+            }
+
+            updateTimer.Stop();
+        }
+
         private void updateTimer_Tick(object sender, EventArgs e)
         {
             timeGone = timeGone.Add(new TimeSpan(0, 0, 1));

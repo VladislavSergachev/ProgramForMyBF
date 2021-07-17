@@ -31,30 +31,112 @@ namespace MyTrainer
         }
         public static void RestoreValues()
         {
+            actualDate = DateTime.Today;
             if (Directory.Exists(_peSavePath))
             {
                 string[] _peFilepaths = Directory.GetFiles(_peSavePath);
-                string[] _peFileNames = new string [_peFilepaths.Length];
-                string 
-                
-                DateTime[] _crDates = new DateTime[_peFilepaths.Length];
-                DateTime lastDate;
-
-                for (int i = 0; i < _peFilepaths.Length - 1; i++)
+                if (_peFilepaths.Length != 0)
                 {
-                    _peFileNames[i] = Path.GetFileNameWithoutExtension(_peFilepaths[i]);
-                    _crDates[i] = DateTime.Parse(_peFileNames[i]);
+                    string[] _peFileNames = new string[_peFilepaths.Length];
+                    string _lastSessionFile;
+                    string _dataToRestore;
+
+                    DateTime[] _crDates = new DateTime[_peFilepaths.Length];
+                    DateTime lastDate;
+
+                    for (int i = 0; i < _peFilepaths.Length; i++)
+                    {
+                        _peFileNames[i] = Path.GetFileNameWithoutExtension(_peFilepaths[i]);
+                        _crDates[i] = DateTime.Parse(_peFileNames[i]);
+                    }
+
+                    lastDate = _crDates.Max();
+
+                    for (int i = 0; i < _crDates.Length; i++)
+                        Console.WriteLine(_crDates[i].ToString());
+
+                    _lastSessionFile = (_peSavePath + lastDate.ToShortDateString() + ".json");
+                    _dataToRestore = File.ReadAllText(_lastSessionFile);
+
+                    PE = JsonConvert.DeserializeObject<ExersicePE>(_dataToRestore);
+
+                    if (lastDate.Day < actualDate.Day)
+                    {
+                        PE.obDaily.Completed = new TimeSpan(0, 0, 0);
+                        PE.BeginTime = new DateTime(1, 1, 1, 0, 0, 0);
+                        PE.EndTime = new DateTime(1, 1, 1, 0, 0, 0);
+                        PE.CurrentTime = new TimeSpan(0, 0, 0);
+                    }
+
+                    if (lastDate.Month < date.Month)
+                    {
+                        PE.obMonthly.Completed = 0;
+                        PE.obDaily.Completed = new TimeSpan(0,0,0);
+                    }
+
+                    if (lastDate.Year < actualDate.Year)
+                    {
+                        PE.obAnnually.Completed = 0;
+                        PE.obMonthly.Completed = 0;
+                        PE.obDaily.Completed = new TimeSpan(0, 0, 0);
+                    }
                 }
-
-                lastDate = _crDates.Max();
-
-                for(int i = 0; i < _crDates.Length - 1; i++)
-                    Console.WriteLine(_crDates[i].ToString());
-
-                
-                
-                PE = JsonConvert.DeserializeObject()
             }
+            else
+                Directory.CreateDirectory(_peSavePath);
+
+            if (Directory.Exists(_footballSavePath))
+            {
+                string[] _footballFilepaths = Directory.GetFiles(_footballSavePath);
+                if (_footballFilepaths.Length != 0)
+                {
+                    string[] _footballFileNames = new string[_footballFilepaths.Length];
+                    string _lastSessionFile;
+                    string _dataToRestore;
+
+                    DateTime[] _crDates = new DateTime[_footballFilepaths.Length];
+                    DateTime lastDate;
+
+                    for (int i = 0; i < _footballFilepaths.Length; i++)
+                    {
+                        _footballFileNames[i] = Path.GetFileNameWithoutExtension(_footballFilepaths[i]);
+                        _crDates[i] = DateTime.Parse(_footballFileNames[i]);
+                    }
+
+                    lastDate = _crDates.Max();
+
+                    for (int i = 0; i < _crDates.Length; i++)
+                        Console.WriteLine(_crDates[i].ToString());
+
+                    _lastSessionFile = (_footballSavePath + lastDate.ToShortDateString() + ".json");
+                    _dataToRestore = File.ReadAllText(_lastSessionFile);
+
+                    Football = JsonConvert.DeserializeObject<ExersiceFootball>(_dataToRestore);
+
+                    if (lastDate.Day < actualDate.Day)
+                    {
+                        Football.obDaily.Completed = new TimeSpan(0, 0, 0);
+                        Football.BeginTime = new DateTime(1, 1, 1, 0, 0, 0);
+                        Football.EndTime = new DateTime(1, 1, 1, 0, 0, 0);
+                        Football.CurrentTime = new TimeSpan(0, 0, 0);
+                    }
+
+                    if (lastDate.Month < date.Month)
+                    {
+                        Football.obMonthly.Completed = 0;
+                        Football.obDaily.Completed = new TimeSpan(0, 0, 0);
+                    }
+
+                    if (lastDate.Year < actualDate.Year)
+                    {
+                        Football.obAnnually.Completed = 0;
+                        Football.obMonthly.Completed = 0;
+                        Football.obDaily.Completed = new TimeSpan(0, 0, 0);
+                    }
+                }
+            }
+            else
+                Directory.CreateDirectory(_footballSavePath);
         }
         public enum TrainKind
         {
