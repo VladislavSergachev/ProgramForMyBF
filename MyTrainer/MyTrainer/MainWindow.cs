@@ -30,7 +30,7 @@ namespace MyTrainer
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            
+            trainerBase.RestoreValues();
         }
 
         private void trainTabSelected(object sender, TabControlEventArgs e)
@@ -75,11 +75,11 @@ namespace MyTrainer
             footTimeFrom.Text = trainerBase.Football.BeginTime.ToShortTimeString();
             footTimeSince.Text = trainerBase.Football.EndTime.ToShortTimeString();
 
-            Console.WriteLine("PE BeginTime " + trainerBase.PE.BeginTime);
-            Console.WriteLine("PE EndTime " + trainerBase.PE.EndTime);
-            Console.WriteLine("FB BeginTime " + trainerBase.Football.BeginTime);
-            Console.WriteLine("FB EndTime " + trainerBase.Football.EndTime);
-            Console.WriteLine("DateTime.Now " + DateTime.Now);
+          //  Console.WriteLine("PE BeginTime " + trainerBase.PE.BeginTime);
+          //  Console.WriteLine("PE EndTime " + trainerBase.PE.EndTime);
+          //  Console.WriteLine("FB BeginTime " + trainerBase.Football.BeginTime);
+          //  Console.WriteLine("FB EndTime " + trainerBase.Football.EndTime);
+          //  Console.WriteLine("DateTime.Now " + DateTime.Now);
 
         }
 
@@ -100,7 +100,7 @@ namespace MyTrainer
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            trainerBase.StoreValues();
+            trainerBase.SaveValues();
         }
     }
 }

@@ -92,7 +92,7 @@ namespace MyTrainer
                 }
 
                 trainerBase.PE.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
-                trainerBase.PE.GetLog();
+                //trainerBase.PE.GetLog();
             }
             else
             {
@@ -139,7 +139,7 @@ namespace MyTrainer
                 }
 
                 trainerBase.Football.HasObjective = hasObjective.Checked; // STORING VALUE OF COMBOBOX TO BOOL VAR WHICH AT THE MAIN SIDE OF APP
-                trainerBase.Football.GetLog();
+                //trainerBase.Football.GetLog();
             }
         }
 

@@ -26,19 +26,14 @@ namespace MyTrainer
         {
             if (trainKind.Equals(trainerBase.TrainKind.PhysicalEdu))
             {
-                Console.WriteLine("Started PE session.\n");
-                timeRemaining.Visible = trainerBase.phEd.Objective.HasObjective;
-                daily = trainerBase.phEd.Objective.Daily;
-                
-                //trainerBase.phEd.CurrentTime = new TimeSpan(0, 0, 0);
+                timeRemaining.Visible = trainerBase.PE.HasObjective;
+                daily = trainerBase.PE.obDaily.Required;
             }
 
             else
             {
-                Console.WriteLine("Started Football session.\n");
-                timeRemaining.Visible = trainerBase.Football.Objective.HasObjective;
-                daily = trainerBase.Football.Objective.Daily;
-                //trainerBase.Football.CurrentTime = new TimeSpan(0, 0, 0);
+                timeRemaining.Visible = trainerBase.Football.HasObjective;
+                daily = trainerBase.Football.obDaily.Required;
             }
 
             motivationLabel.Text = "Не сдавайся!";
@@ -49,7 +44,7 @@ namespace MyTrainer
         {
             if (trainKind.Equals(trainerBase.TrainKind.PhysicalEdu))
             {
-                trainerBase.phEd.StopTraining();
+                trainerBase.PE.StopTraining();
                 
             }
             else
@@ -64,37 +59,34 @@ namespace MyTrainer
         private void updateTimer_Tick(object sender, EventArgs e)
         {
             timeGone = timeGone.Add(new TimeSpan(0, 0, 1));
-            Console.WriteLine(timeGone.ToString());
             if (trainKind.Equals(trainerBase.TrainKind.PhysicalEdu))
             {
-                trainerBase.phEd.CurrentTime = trainerBase.phEd.CurrentTime.Add(new TimeSpan(0, 0, 1));
-                trainerBase.phEd.Objective.Daily -= new TimeSpan(0, 0, 1);
+                trainerBase.PE.CurrentTime = trainerBase.PE.CurrentTime.Add(new TimeSpan(0, 0, 1));
+                trainerBase.PE.obDaily.Completed += new TimeSpan(0, 0, 1);
 
-                Console.WriteLine("time: " + trainerBase.phEd.CurrentTime);
 
                 currentTime.Text = "Ты тренируешься уже " + timeGone.ToString();
-                if (trainerBase.phEd.Objective.HasObjective)
+                if (trainerBase.PE.HasObjective)
                 {
-                    if (trainerBase.phEd.CurrentTime >= daily)
+                    if (trainerBase.PE.CurrentTime >= daily)
                     {
                         timeRemaining.Text = "Дневная цель достигнута!";
                         motivationLabel.Text = "Молодец!";
                     }
                     else
-                        timeRemaining.Text = "Осталось " + trainerBase.phEd.Objective.Daily + " для достижения цели на день";
+                        timeRemaining.Text = "Осталось " + (trainerBase.PE.obDaily.Required - trainerBase.PE.obDaily.Completed) + " для достижения цели на день";
 
-                   // Console.WriteLine("H: " + trainerBase.phEd.CurrentTime + " " + trainerBase.phEd.Objective.Daily);
+                   // Console.WriteLine("H: " + trainerBase.phEd.CurrentTime + " " + trainerBase.phEd.DailyObj);
                 }
             }
             else
             {
                 trainerBase.Football.CurrentTime = trainerBase.Football.CurrentTime.Add(new TimeSpan(0, 0, 1));
-                trainerBase.Football.Objective.Daily -= new TimeSpan(0, 0, 1);
+                trainerBase.Football.obDaily.Completed += new TimeSpan(0, 0, 1);
 
-                Console.WriteLine("time " + trainerBase.Football.CurrentTime);
 
                 currentTime.Text = "Ты тренируешься уже " + timeGone.ToString();
-                if (trainerBase.Football.Objective.HasObjective)
+                if (trainerBase.Football.HasObjective)
                 {
                     if (trainerBase.Football.CurrentTime >= daily)
                     {
@@ -102,7 +94,7 @@ namespace MyTrainer
                         motivationLabel.Text = "Молодец!";
                     }
                     else
-                        timeRemaining.Text = "Осталось " + trainerBase.Football.Objective.Daily + " для достижения цели на день";
+                        timeRemaining.Text = "Осталось " + (trainerBase.Football.obDaily.Required - trainerBase.Football.obDaily.Completed) + " для достижения цели на день";
 
                 }
             }
