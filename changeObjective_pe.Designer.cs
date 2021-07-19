@@ -29,6 +29,7 @@ namespace MyTrainer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(changeObjective_pe));
             this.mainPanel = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -272,9 +273,10 @@ namespace MyTrainer
             this.Controls.Add(this.hasObjective);
             this.Controls.Add(this.applyObjButton);
             this.Controls.Add(this.mainPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "changeObjective_pe";
-            this.Text = "changeObjFrame";
+            this.Text = "Изменить цель";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onChangeFrameClose);
             this.SizeChanged += new System.EventHandler(this.changeFrameSized);
             this.mainPanel.ResumeLayout(false);

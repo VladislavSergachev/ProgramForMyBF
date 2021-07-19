@@ -29,6 +29,7 @@ namespace MyTrainer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(stats));
             this.statCalendar = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -177,9 +178,10 @@ namespace MyTrainer
             this.Controls.Add(this.bWasTraining);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statCalendar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "stats";
-            this.Text = "stats";
+            this.Text = "Статистика";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.stats_FormClosing);
             this.SizeChanged += new System.EventHandler(this.stats_SizeChanged);
             this.panel1.ResumeLayout(false);

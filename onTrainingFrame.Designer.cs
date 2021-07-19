@@ -30,6 +30,7 @@ namespace MyTrainer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(onTrainingFrame));
             this.label1 = new System.Windows.Forms.Label();
             this.currentTime = new System.Windows.Forms.Label();
             this.timeRemaining = new System.Windows.Forms.Label();
@@ -115,9 +116,10 @@ namespace MyTrainer
             this.Controls.Add(this.motivationLabel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "onTrainingFrame";
-            this.Text = "Form2";
+            this.Text = "Тренировка";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onTrainingFrame_FormClosing);
             this.Load += new System.EventHandler(this.trainFrame_Load);
             this.SizeChanged += new System.EventHandler(this.onTrainingFrame_SizeChanged);

@@ -29,6 +29,7 @@ namespace MyTrainer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.mainFrame = new System.Windows.Forms.TabControl();
             this.tabTraining = new System.Windows.Forms.TabPage();
             this.trCoverPanel = new System.Windows.Forms.Panel();
@@ -708,9 +709,10 @@ namespace MyTrainer
             this.ClientSize = new System.Drawing.Size(685, 420);
             this.Controls.Add(this.TrainKindLabel);
             this.Controls.Add(this.mainFrame);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "My Trainer";
             this.Activated += new System.EventHandler(this.MainWindow_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
