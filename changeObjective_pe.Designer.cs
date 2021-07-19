@@ -248,7 +248,7 @@ namespace MyTrainer
             this.applyObjButton.Name = "applyObjButton";
             this.applyObjButton.Size = new System.Drawing.Size(75, 23);
             this.applyObjButton.TabIndex = 2;
-            this.applyObjButton.Text = "Готово";
+            this.applyObjButton.Text = "Сохранить";
             this.applyObjButton.UseVisualStyleBackColor = true;
             this.applyObjButton.Click += new System.EventHandler(this.applyObjButton_Click);
             // 

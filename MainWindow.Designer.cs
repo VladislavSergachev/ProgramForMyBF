@@ -466,9 +466,9 @@ namespace MyTrainer
             // fbStatCoverPanel
             // 
             this.fbStatCoverPanel.Controls.Add(this.label5);
-            this.fbStatCoverPanel.Location = new System.Drawing.Point(0, 17);
+            this.fbStatCoverPanel.Location = new System.Drawing.Point(-7, 5);
             this.fbStatCoverPanel.Name = "fbStatCoverPanel";
-            this.fbStatCoverPanel.Size = new System.Drawing.Size(202, 179);
+            this.fbStatCoverPanel.Size = new System.Drawing.Size(212, 179);
             this.fbStatCoverPanel.TabIndex = 24;
             this.fbStatCoverPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.fbStatCoverPanel_Paint);
             // 

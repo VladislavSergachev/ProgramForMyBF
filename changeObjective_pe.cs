@@ -58,17 +58,7 @@ namespace MyTrainer
 
         private void onChangeFrameClose(object sender, FormClosingEventArgs e)
         {
-            if (isAnyValChanged)
-            {
-
-                if (MessageBox.Show("Сохранить изменения?", "Какие-то значения были изменены", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    skipChanges();
-            }
-
-            else
-            {
-                skipChanges();
-            }
+            skipChanges();
         }
 
         public void applyChanges(trainerBase.TrainKind trainKind)
@@ -224,27 +214,27 @@ namespace MyTrainer
 
         private void hoursPerDay_ValueChanged(object sender, EventArgs e)
         {
-            valChangingHandler();
+            
         }
 
         private void minutesPerDay_ValueChanged(object sender, EventArgs e)
         {
-            valChangingHandler();
+           
         }
 
         private void secondsPerDay_ValueChanged(object sender, EventArgs e)
         {
-            valChangingHandler();
+            
         }
 
         private void daysPerMonth_ValueChanged(object sender, EventArgs e)
         {
-            valChangingHandler();
+            
         }
 
         private void monthsPerYear_ValueChanged(object sender, EventArgs e)
         {
-            valChangingHandler();
+            
         }
         public void valChangingHandler() 
         {
